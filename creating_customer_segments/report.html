@@ -11783,9 +11783,9 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>欢迎来到机器学习工程师纳米学位的第三个项目！在这个notebook文件中，有些模板代码已经提供给你，但你还需要实现更多的功能来完成这个项目。除非有明确要求，你无须修改任何已给出的代码。以<strong>'练习'</strong>开始的标题表示接下来的代码部分中有你必须要实现的功能。每一部分都会有详细的指导，需要实现的部分也会在注释中以<strong>'TODO'</strong>标出。请仔细阅读所有的提示！</p>
+<p>欢迎来到机器学习工程师纳米学位的第三个项目！在这个 notebook 文件中，有些模板代码已经提供给你，但你还需要实现更多的功能来完成这个项目。除非有明确要求，你无须修改任何已给出的代码。以<strong>'练习'</strong>开始的标题表示接下来的代码部分中有你必须要实现的功能。每一部分都会有详细的指导，需要实现的部分也会在注释中以 <strong>'TODO'</strong> 标出。请仔细阅读所有的提示！</p>
 <p>除了实现代码外，你还<strong>必须</strong>回答一些与项目和你的实现有关的问题。每一个需要你回答的问题都会以<strong>'问题 X'</strong>为标题。请仔细阅读每个问题，并且在问题后的<strong>'回答'</strong>文字框中写出完整的答案。我们将根据你对问题的回答和撰写代码所实现的功能来对你提交的项目进行评分。</p>
-<blockquote><p><strong>提示：</strong>Code 和 Markdown 区域可通过 <strong>Shift + Enter</strong> 快捷键运行。此外，Markdown可以通过双击进入编辑模式。</p>
+<blockquote><p><strong>提示：</strong>Code 和 Markdown 区域可通过 <strong>Shift + Enter</strong> 快捷键运行。此外，Markdown 可以通过双击进入编辑模式。</p>
 </blockquote>
 
 </div>
@@ -11796,8 +11796,8 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="&#24320;&#22987;">&#24320;&#22987;<a class="anchor-link" href="#&#24320;&#22987;">&#182;</a></h2><p>在这个项目中，你将分析一个数据集的内在结构，这个数据集包含很多客户真对不同类型产品的年度采购额（用<strong>金额</strong>表示）。这个项目的任务之一是如何最好地描述一个批发商不同种类顾客之间的差异。这样做将能够使得批发商能够更好的组织他们的物流服务以满足每个客户的需求。</p>
-<p>这个项目的数据集能够在<a href="https://archive.ics.uci.edu/ml/datasets/Wholesale+customers">UCI机器学习信息库</a>中找到.因为这个项目的目的，分析将不会包括'Channel'和'Region'这两个特征——重点集中在6个记录的客户购买的产品类别上。</p>
-<p>运行下面的的代码单元以载入整个客户数据集和一些这个项目需要的Python库。如果你的数据集载入成功，你将看到后面输出数据集的大小。</p>
+<p>这个项目的数据集能够在<a href="https://archive.ics.uci.edu/ml/datasets/Wholesale+customers">UCI机器学习信息库</a>中找到.因为这个项目的目的，分析将不会包括 'Channel' 和 'Region' 这两个特征——重点集中在6个记录的客户购买的产品类别上。</p>
+<p>运行下面的的代码单元以载入整个客户数据集和一些这个项目需要的 Python 库。如果你的数据集载入成功，你将看到后面输出数据集的大小。</p>
 
 </div>
 </div>
@@ -11807,18 +11807,34 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 检查你的Python版本</span>
+<span class="kn">from</span> <span class="nn">sys</span> <span class="k">import</span> <span class="n">version_info</span>
+<span class="k">if</span> <span class="n">version_info</span><span class="o">.</span><span class="n">major</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;请使用Python 3.x 来完成此项目&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 引入这个项目需要的库</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span> <span class="c1"># Allows the use of display() for DataFrames</span>
-
-<span class="c1"># Import supplementary visualizations code visuals.py</span>
 <span class="kn">import</span> <span class="nn">visuals</span> <span class="k">as</span> <span class="nn">vs</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span> <span class="c1"># 使得我们可以对DataFrame使用display()函数</span>
 
-<span class="c1"># Pretty display for notebooks</span>
+<span class="c1"># 设置以内联的形式显示matplotlib绘制的图片（在notebook中显示更美观）</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># 高分辨率显示</span>
+<span class="c1"># %config InlineBackend.figure_format=&#39;retina&#39;</span>
 
-<span class="c1"># Load the wholesale customers dataset</span>
+<span class="c1"># 载入整个客户数据集</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;customers.csv&quot;</span><span class="p">)</span>
     <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span> <span class="s1">&#39;Channel&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
@@ -11862,10 +11878,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display a description of the dataset</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 显示数据集的一个描述</span>
 <span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 
@@ -12005,14 +12021,14 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Select three indices of your choice you wish to sample from the dataset</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO：从数据集中选择三个你希望抽样的数据点的索引</span>
 <span class="c1">#indices = [181,86,85,325,183]</span>
 <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">181</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span><span class="mi">183</span><span class="p">]</span>
 
-<span class="c1"># Create a DataFrame of the chosen samples</span>
+<span class="c1"># 为选择的样本建立一个DataFrame</span>
 <span class="n">samples</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Chosen samples of wholesale customers dataset:&quot;</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
@@ -12113,7 +12129,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-1">&#38382;&#39064; 1<a class="anchor-link" href="#&#38382;&#39064;-1">&#182;</a></h3><p><em>在你看来你选择的这三个样本点分别代表什么类型的企业（客户）？</em>对每一个你选择的样本客户，通过它在每一种产品类型上的花费与数据集的统计描述进行比较，给出你做上述判断的理由。</p>
+<h3 id="&#38382;&#39064;-1">&#38382;&#39064; 1<a class="anchor-link" href="#&#38382;&#39064;-1">&#182;</a></h3><p>在你看来你选择的这三个样本点分别代表什么类型的企业（客户）？对每一个你选择的样本客户，通过它在每一种产品类型上的花费与数据集的统计描述进行比较，给出你做上述判断的理由。</p>
 <p><strong>提示：</strong> 企业的类型包括超市、咖啡馆、零售商以及其他。注意不要使用具体企业的名字，比如说在描述一个餐饮业客户时，你不能使用麦当劳。</p>
 
 </div>
@@ -12124,9 +12140,9 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
-<p>对于第一个样本点（112151 29627 18148 16745 4948 8550），企业类型可能是餐馆酒店，因为餐馆酒店每天需要购买大量的新鲜食品。</p>
-<p>对于第二个样本点（16117  46197   92780   1026    40827   2944），企业类型可能是零售商，因为零售商会购买大量杂货，满足不同客户需求。</p>
-<p>对弈第三个样本点（36847  43950   20170   36534   239 47943），可能是个人消费者，会购买较多的熟食日常生活实用。</p>
+<p>对于第一个样本点（112151 29627 18148 16745 4948 8550），企业类型可能是餐馆酒店，因为餐馆酒店每天需要购买大量的新鲜食品,该数据中Fresh值为最大值。</p>
+<p>对于第二个样本点（16117  46197   92780   1026    40827   2944），企业类型可能是零售商，因为零售商会购买大量杂货，满足不同客户需求，该数据中Grocery和Detergents_Paper为最大值。</p>
+<p>对弈第三个样本点（36847  43950   20170   36534   239 47943），可能是个人消费者，会购买较多的熟食日常生活实用，该数据中Delicatessen为最大值</p>
 
 </div>
 </div>
@@ -12138,13 +12154,15 @@ div#notebook {
 <h3 id="&#32451;&#20064;:-&#29305;&#24449;&#30456;&#20851;&#24615;">&#32451;&#20064;: &#29305;&#24449;&#30456;&#20851;&#24615;<a class="anchor-link" href="#&#32451;&#20064;:-&#29305;&#24449;&#30456;&#20851;&#24615;">&#182;</a></h3><p>一个有趣的想法是，考虑这六个类别中的一个（或者多个）产品类别，是否对于理解客户的购买行为具有实际的相关性。也就是说，当用户购买了一定数量的某一类产品，我们是否能够确定他们必然会成比例地购买另一种类的产品。有一个简单的方法可以检测相关性：我们用移除了某一个特征之后的数据集来构建一个监督学习（回归）模型，然后用这个模型去预测那个被移除的特征，再对这个预测结果进行评分，看看预测结果如何。</p>
 <p>在下面的代码单元中，你需要实现以下的功能：</p>
 <ul>
-<li>使用<code>DataFrame.drop</code>函数移除数据集中你选择的不需要的特征，并将移除后的结果赋值给<code>new_data</code>。</li>
-<li>使用<code>sklearn.model_selection.train_test_split</code>将数据集分割成训练集和测试集。<ul>
-<li>使用移除的特征作为你的目标标签。设置<code>test_size</code>为<code>0.25</code>并设置一个<code>random_state</code>。</li>
+<li>使用 <code>DataFrame.drop</code> 函数移除数据集中你选择的不需要的特征，并将移除后的结果赋值给 <code>new_data</code> 。</li>
+<li>使用 <code>sklearn.model_selection.train_test_split</code> 将数据集分割成训练集和测试集。<ul>
+<li>使用移除的特征作为你的目标标签。设置 <code>test_size</code> 为 <code>0.25</code> 并设置一个 <code>random_state</code> 。</li>
 </ul>
 </li>
-<li>导入一个DecisionTreeRegressor（决策树回归器），设置一个<code>random_state</code>，然后用训练集训练它。</li>
-<li>使用回归器的<code>score</code>函数输出模型在测试集上的预测得分。</li>
+</ul>
+<ul>
+<li>导入一个 DecisionTreeRegressor （决策树回归器），设置一个 <code>random_state</code>，然后用训练集训练它。</li>
+<li>使用回归器的 <code>score</code> 函数输出模型在测试集上的预测得分。</li>
 </ul>
 
 </div>
@@ -12152,10 +12170,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Make a copy of the DataFrame, using the &#39;drop&#39; function to drop the given feature</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO：为DataFrame创建一个副本，用&#39;drop&#39;函数丢弃一个特征# TODO： </span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeRegressor</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">r2_score</span>
@@ -12163,16 +12181,14 @@ div#notebook {
 <span class="n">y</span><span class="o">=</span><span class="n">data_1</span><span class="p">[</span><span class="s1">&#39;Detergents_Paper&#39;</span><span class="p">]</span>
 <span class="n">new_data</span> <span class="o">=</span> <span class="n">data_1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Detergents_Paper&#39;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
-
-<span class="c1"># TODO: Split the data into training and testing sets(0.25) using the given feature as the target</span>
-<span class="c1"># Set a random state.</span>
+<span class="c1"># TODO：使用给定的特征作为目标，将数据分割成训练集和测试集</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="c1"># TODO: Create a decision tree regressor and fit it to the training set</span>
+<span class="c1"># TODO：创建一个DecisionTreeRegressor（决策树回归器）并在训练集上训练它</span>
 <span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
 
-<span class="c1"># TODO: Report the score of the prediction using the testing set</span>
+<span class="c1"># TODO：输出在测试集上的预测得分</span>
 <span class="n">y_test_predict</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">score</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_test_predict</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;score:&#39;</span><span class="p">,</span><span class="n">score</span><span class="p">)</span>
@@ -12205,8 +12221,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-2">&#38382;&#39064; 2<a class="anchor-link" href="#&#38382;&#39064;-2">&#182;</a></h3><p><em>你尝试预测哪一个特征？预测的得分是多少？这个特征对于区分用户的消费习惯来说必要吗？为什么？</em><br>
-<strong>提示：</strong> 决定系数（coefficient of determination）, <code>R^2</code>,结果在0到1之间，1表示完美拟合，一个负的<code>R^2</code>表示模型不能够拟合数据。</p>
+<h3 id="&#38382;&#39064;-2">&#38382;&#39064; 2<a class="anchor-link" href="#&#38382;&#39064;-2">&#182;</a></h3><p>你尝试预测哪一个特征？预测的得分是多少？这个特征对于区分用户的消费习惯来说必要吗？为什么？<br>
+<strong>提示：</strong> 决定系数（coefficient of determination），$R^2$ 结果在0到1之间，1表示完美拟合，一个负的 $R^2$ 表示模型不能够拟合数据。</p>
 
 </div>
 </div>
@@ -12233,10 +12249,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Produce a scatter matrix for each pair of features in the data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 对于数据中的每一对特征构造一个散布矩阵</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">diagonal</span> <span class="o">=</span> <span class="s1">&#39;kde&#39;</span><span class="p">);</span>
 </pre></div>
 
@@ -12271,8 +12287,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-3">&#38382;&#39064; 3<a class="anchor-link" href="#&#38382;&#39064;-3">&#182;</a></h3><p><em>这里是否存在一些特征他们彼此之间存在一定程度相关性？如果有请列出。这个结果是验证了还是否认了你尝试预测的那个特征的相关性？这些特征的数据是怎么分布的？</em></p>
-<p><strong>提示：</strong> 这些数据是正态分布(normally distributed)的吗？大多数的数据点分布在哪？</p>
+<h3 id="&#38382;&#39064;-3">&#38382;&#39064; 3<a class="anchor-link" href="#&#38382;&#39064;-3">&#182;</a></h3><p>这里是否存在一些特征他们彼此之间存在一定程度相关性？如果有请列出。这个结果是验证了还是否认了你尝试预测的那个特征的相关性？这些特征的数据是怎么分布的？</p>
+<p><strong>提示：</strong> 这些数据是正态分布（normally distributed）的吗？大多数的数据点分布在哪？</p>
 
 </div>
 </div>
@@ -12302,11 +12318,11 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#32451;&#20064;:-&#29305;&#24449;&#32553;&#25918;">&#32451;&#20064;: &#29305;&#24449;&#32553;&#25918;<a class="anchor-link" href="#&#32451;&#20064;:-&#29305;&#24449;&#32553;&#25918;">&#182;</a></h3><p>如果数据不是正态分布的，尤其是数据的平均数和中位数相差很大的时候（表示数据非常歪斜）。这时候通常用一个非线性的缩放是<a href="https://github.com/czcbangkai/translations/blob/master/use_of_logarithms_in_economics/use_of_logarithms_in_economics.pdf">很合适的</a>，<a href="http://econbrowser.com/archives/2014/02/use-of-logarithms-in-economics">（英文原文）</a> — 尤其是对于金融数据。一种实现这个缩放的方法是使用<a href="http://scipy.github.io/devdocs/generated/scipy.stats.boxcox.html">Box-Cox 变换</a>，这个方法能够计算出能够最佳减小数据倾斜的指数变换方法。一个比较简单的并且在大多数情况下都适用的方法是使用自然对数。</p>
+<h3 id="&#32451;&#20064;:-&#29305;&#24449;&#32553;&#25918;">&#32451;&#20064;: &#29305;&#24449;&#32553;&#25918;<a class="anchor-link" href="#&#32451;&#20064;:-&#29305;&#24449;&#32553;&#25918;">&#182;</a></h3><p>如果数据不是正态分布的，尤其是数据的平均数和中位数相差很大的时候（表示数据非常歪斜）。这时候通常用一个<a href="https://github.com/czcbangkai/translations/blob/master/use_of_logarithms_in_economics/use_of_logarithms_in_economics.pdf">非线性的缩放</a>是很合适的，<a href="http://econbrowser.com/archives/2014/02/use-of-logarithms-in-economics">（英文原文）</a> — 尤其是对于金融数据。一种实现这个缩放的方法是使用 <a href="http://scipy.github.io/devdocs/generated/scipy.stats.boxcox.html">Box-Cox 变换</a>，这个方法能够计算出能够最佳减小数据倾斜的指数变换方法。一个比较简单的并且在大多数情况下都适用的方法是使用自然对数。</p>
 <p>在下面的代码单元中，你将需要实现以下功能：</p>
 <ul>
-<li>使用<code>np.log</code>函数在数据 <code>data</code> 上做一个对数缩放，然后将它的副本（不改变原始data的值）赋值给<code>log_data</code>。</li>
-<li>使用<code>np.log</code>函数在样本数据 <code>samples</code> 上做一个对数缩放，然后将它的副本赋值给<code>log_samples</code>。</li>
+<li>使用 <code>np.log</code> 函数在数据 <code>data</code> 上做一个对数缩放，然后将它的副本（不改变原始data的值）赋值给 <code>log_data</code>。 </li>
+<li>使用 <code>np.log</code> 函数在样本数据 <code>samples</code> 上做一个对数缩放，然后将它的副本赋值给 <code>log_samples</code>。</li>
 </ul>
 
 </div>
@@ -12314,16 +12330,16 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Scale the data using the natural logarithm</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO：使用自然对数缩放数据</span>
 <span class="n">log_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-<span class="c1"># TODO: Scale the sample data using the natural logarithm</span>
+<span class="c1"># TODO：使用自然对数缩放样本数据</span>
 <span class="n">log_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
 
-<span class="c1"># Produce a scatter matrix for each pair of newly-transformed features</span>
+<span class="c1"># 为每一对新产生的特征制作一个散射矩阵</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">log_data</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">diagonal</span> <span class="o">=</span> <span class="s1">&#39;kde&#39;</span><span class="p">);</span>
 </pre></div>
 
@@ -12366,10 +12382,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display the log-transformed sample data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 展示经过对数变换后的样本数据</span>
 <span class="n">display</span><span class="p">(</span><span class="n">log_samples</span><span class="p">)</span>
 </pre></div>
 
@@ -12457,45 +12473,45 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#32451;&#20064;:-&#24322;&#24120;&#20540;&#26816;&#27979;">&#32451;&#20064;: &#24322;&#24120;&#20540;&#26816;&#27979;<a class="anchor-link" href="#&#32451;&#20064;:-&#24322;&#24120;&#20540;&#26816;&#27979;">&#182;</a></h3><p>对于任何的分析，在数据预处理的过程中检测数据中的异常值都是非常重要的一步。异常值的出现会使得把这些值考虑进去后结果出现倾斜。这里有很多关于怎样定义什么是数据集中的异常值的经验法则。这里我们将使用<a href="http://datapigtechnologies.com/blog/index.php/highlighting-outliers-in-your-data-with-the-tukey-method/">Tukey的定义异常值的方法</a>：一个<em>异常阶（outlier step）</em>被定义成1.5倍的四分位距（interquartile range，IQR）。一个数据点如果某个特征包含在该特征的IQR之外的特征，那么该数据点被认定为异常点。</p>
+<h3 id="&#32451;&#20064;:-&#24322;&#24120;&#20540;&#26816;&#27979;">&#32451;&#20064;: &#24322;&#24120;&#20540;&#26816;&#27979;<a class="anchor-link" href="#&#32451;&#20064;:-&#24322;&#24120;&#20540;&#26816;&#27979;">&#182;</a></h3><p>对于任何的分析，在数据预处理的过程中检测数据中的异常值都是非常重要的一步。异常值的出现会使得把这些值考虑进去后结果出现倾斜。这里有很多关于怎样定义什么是数据集中的异常值的经验法则。这里我们将使用<a href="http://datapigtechnologies.com/blog/index.php/highlighting-outliers-in-your-data-with-the-tukey-method/"> Tukey 的定义异常值的方法</a>：一个异常阶（outlier step）被定义成1.5倍的四分位距（interquartile range，IQR）。一个数据点如果某个特征包含在该特征的 IQR 之外的特征，那么该数据点被认定为异常点。</p>
 <p>在下面的代码单元中，你需要完成下面的功能：</p>
 <ul>
-<li>将指定特征的25th分位点的值分配给<code>Q1</code>。使用<code>np.percentile</code>来完成这个功能。</li>
-<li>将指定特征的75th分位点的值分配给<code>Q3</code>。同样的，使用<code>np.percentile</code>来完成这个功能。</li>
-<li>将指定特征的异常阶的计算结果赋值给<code>step</code>.</li>
-<li>选择性地通过将索引添加到<code>outliers</code>列表中，以移除异常值。</li>
+<li>将指定特征的 25th 分位点的值分配给 <code>Q1</code> 。使用 <code>np.percentile</code> 来完成这个功能。</li>
+<li>将指定特征的 75th 分位点的值分配给 <code>Q3</code> 。同样的，使用 <code>np.percentile</code> 来完成这个功能。</li>
+<li>将指定特征的异常阶的计算结果赋值给 <code>step</code>。</li>
+<li>选择性地通过将索引添加到 <code>outliers</code> 列表中，以移除异常值。</li>
 </ul>
 <p><strong>注意：</strong> 如果你选择移除异常值，请保证你选择的样本点不在这些移除的点当中！
-一旦你完成了这些功能，数据集将存储在<code>good_data</code>中。</p>
+一旦你完成了这些功能，数据集将存储在 <code>good_data</code> 中。</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># For each feature find the data points with extreme high or low values</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 对于每一个特征，找到值异常高或者是异常低的数据点</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">log_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-
-    <span class="c1"># TODO: Calculate Q1 (25th percentile of the data) for the given feature</span>
+    
+    <span class="c1"># TODO: 计算给定特征的Q1（数据的25th分位点）</span>
     <span class="n">Q1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span><span class="mi">25</span><span class="p">)</span>
     
-    <span class="c1"># TODO: Calculate Q3 (75th percentile of the data) for the given feature</span>
+    <span class="c1"># TODO: 计算给定特征的Q3（数据的75th分位点）</span>
     <span class="n">Q3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span><span class="mi">75</span><span class="p">)</span>
     
-    <span class="c1"># TODO: Use the interquartile range to calculate an outlier step (1.5 times the interquartile range)</span>
+    <span class="c1"># TODO: 使用四分位范围计算异常阶（1.5倍的四分位距）</span>
     <span class="n">step</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">*</span><span class="p">(</span><span class="n">Q3</span><span class="o">-</span><span class="n">Q1</span><span class="p">)</span>
     
-    <span class="c1"># Display the outliers</span>
+    <span class="c1"># 显示异常点</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data points considered outliers for the feature &#39;</span><span class="si">{}</span><span class="s2">&#39;:&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">feature</span><span class="p">))</span>
     <span class="n">display</span><span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="o">~</span><span class="p">((</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="n">step</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">log_data</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="n">step</span><span class="p">))])</span>
     
-<span class="c1"># OPTIONAL: Select the indices for data points you wish to remove</span>
+<span class="c1"># TODO(可选): 选择你希望移除的数据点的索引</span>
 <span class="n">outliers</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">154</span><span class="p">]</span>
 
-<span class="c1"># Remove the outliers, if any were specified</span>
+<span class="c1"># 以下代码会移除outliers中索引的数据点, 并储存在good_data中</span>
 <span class="n">good_data</span> <span class="o">=</span> <span class="n">log_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">log_data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">outliers</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
@@ -13259,7 +13275,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-4">&#38382;&#39064; 4<a class="anchor-link" href="#&#38382;&#39064;-4">&#182;</a></h3><p><em>请列出所有在多于一个特征下被看作是异常的数据点。这些点应该被从数据集中移除吗？为什么？把你认为需要移除的数据点全部加入到到<code>outliers</code>变量中。</em></p>
+<h3 id="&#38382;&#39064;-4">&#38382;&#39064; 4<a class="anchor-link" href="#&#38382;&#39064;-4">&#182;</a></h3><p>请列出所有在多于一个特征下被看作是异常的数据点。这些点应该被从数据集中移除吗？为什么？把你认为需要移除的数据点全部加入到到 <code>outliers</code> 变量中。</p>
 
 </div>
 </div>
@@ -13270,7 +13286,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
 <p>65在fresh和Frozen两个特征下被看作是异常的数据点；66、128在fresh和Delicatessen两个特征下被看作是异常的数据点；154在Milk、Grocery和Delicatessen三个特征下被看作是异常点；75在Grocery和Detergents_Paper两个特征下是异常数据；</p>
-<p>在多个特征下都偏离较大，需要移除该数据点。</p>
+<p>考虑后续需要使用PCA降维，降维后主成分是由当前特征乘以相应的权重，在多个特征下都偏离较大的情况下，对主成分影响较大，考虑移除该数据点。</p>
 
 </div>
 </div>
@@ -13288,11 +13304,11 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#32451;&#20064;:-&#20027;&#25104;&#20998;&#20998;&#26512;&#65288;PCA&#65289;">&#32451;&#20064;: &#20027;&#25104;&#20998;&#20998;&#26512;&#65288;PCA&#65289;<a class="anchor-link" href="#&#32451;&#20064;:-&#20027;&#25104;&#20998;&#20998;&#26512;&#65288;PCA&#65289;">&#182;</a></h3><p>既然数据被缩放到一个更加正态分布的范围中并且我们也移除了需要移除的异常点，我们现在就能够在<code>good_data</code>上使用PCA算法以发现数据的哪一个维度能够最大化特征的方差。除了找到这些维度，PCA也将报告每一个维度的<em>解释方差比（explained variance ratio）</em>--这个数据有多少方差能够用这个单独的维度来解释。注意PCA的一个组成部分（维度）能够被看做这个空间中的一个新的“特征”，但是它是原来数据中的特征构成的。</p>
+<h3 id="&#32451;&#20064;:-&#20027;&#25104;&#20998;&#20998;&#26512;&#65288;PCA&#65289;">&#32451;&#20064;: &#20027;&#25104;&#20998;&#20998;&#26512;&#65288;PCA&#65289;<a class="anchor-link" href="#&#32451;&#20064;:-&#20027;&#25104;&#20998;&#20998;&#26512;&#65288;PCA&#65289;">&#182;</a></h3><p>既然数据被缩放到一个更加正态分布的范围中并且我们也移除了需要移除的异常点，我们现在就能够在 <code>good_data</code> 上使用PCA算法以发现数据的哪一个维度能够最大化特征的方差。除了找到这些维度，PCA 也将报告每一个维度的解释方差比（explained variance ratio）--这个数据有多少方差能够用这个单独的维度来解释。注意 PCA 的一个组成部分（维度）能够被看做这个空间中的一个新的“特征”，但是它是原来数据中的特征构成的。</p>
 <p>在下面的代码单元中，你将要实现下面的功能：</p>
 <ul>
-<li>导入<code>sklearn.decomposition.PCA</code>并且将<code>good_data</code>用PCA并且使用6个维度进行拟合后的结果保存到<code>pca</code>中。</li>
-<li>使用<code>pca.transform</code>将<code>log_samples</code>进行转换，并将结果存储到<code>pca_samples</code>中。</li>
+<li>导入 <code>sklearn.decomposition.PCA</code> 并且将 <code>good_data</code> 用 PCA 并且使用6个维度进行拟合后的结果保存到 <code>pca</code> 中。</li>
+<li>使用 <code>pca.transform</code> 将 <code>log_samples</code> 进行转换，并将结果存储到 <code>pca_samples</code> 中。</li>
 </ul>
 
 </div>
@@ -13300,18 +13316,18 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Apply PCA by fitting the good data with the same number of dimensions as features</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO：通过在good data上进行PCA，将其转换成两个维度</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <span class="n">PCA</span>
 <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">good_data</span><span class="p">)</span>
 
-<span class="c1"># TODO: Transform log_samples using the PCA fit above</span>
+<span class="c1"># TODO：使用上面的PCA拟合将变换施加在log_samples上</span>
 <span class="n">pca_samples</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">log_samples</span><span class="p">)</span>
 
-<span class="c1"># Generate PCA results plot</span>
+<span class="c1"># 生成PCA的结果图</span>
 <span class="n">pca_results</span> <span class="o">=</span> <span class="n">vs</span><span class="o">.</span><span class="n">pca_results</span><span class="p">(</span><span class="n">good_data</span><span class="p">,</span> <span class="n">pca</span><span class="p">)</span>
 </pre></div>
 
@@ -13346,8 +13362,13 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-5">&#38382;&#39064; 5<a class="anchor-link" href="#&#38382;&#39064;-5">&#182;</a></h3><p><em>数据的第一个和第二个主成分</em> <strong>总共</strong> <em>表示了多少的方差？</em>  前四个主成分呢？使用上面提供的可视化图像，讨论从用户花费的角度来看前四个<strong>主要成分</strong>的消费行为最能代表哪种类型的客户并给出你做出判断的理由。</p>
-<p><strong>提示：</strong> 某一特定维度上的正向增长对应<strong>正权</strong>特征的<strong>增长</strong>和<strong>负权</strong>特征的<strong>减少</strong>。增长和减少的速率和每个特征的权重相关。<a href="https://onlinecourses.science.psu.edu/stat505/node/54">参考资料(英文)</a>。</p>
+<h3 id="&#38382;&#39064;-5">&#38382;&#39064; 5<a class="anchor-link" href="#&#38382;&#39064;-5">&#182;</a></h3><p>数据的第一个和第二个主成分<strong>总共</strong>表示了多少的方差？ 前四个主成分呢？使用上面提供的可视化图像，从用户花费的角度来讨论前四个主要成分中每个主成分代表的消费行为并给出你做出判断的理由。</p>
+<p><strong>提示：</strong></p>
+<ul>
+<li>对每个主成分中的特征分析权重的正负和大小。</li>
+<li>结合每个主成分权重的正负讨论消费行为。</li>
+<li>某一特定维度上的正向增长对应正权特征的增长和负权特征的减少。增长和减少的速率和每个特征的权重相关。<a href="https://onlinecourses.science.psu.edu/stat505/node/54">参考资料：Interpretation of the Principal Components</a></li>
+</ul>
 
 </div>
 </div>
@@ -13358,7 +13379,8 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
 <p>第一个和第二个主成分总共表示了0.7068的方差，前4个主成分表示了0.9311的方差。</p>
-<p>前4个主成分Detergents_Paper、Fresh负向权重较高，Frozen、Delicatessen正像权重较高，可能代表的是年轻白领的消费行为，喜欢熟食和冰冻食物。</p>
+<p>Dimension 1：Detergents_Paper、Grocery、Milk比重较高，可能是零售商</p>
+<p>Dimension 2、3、4：Fresh、Frozen、Delicatessen比重较高，可能是餐馆</p>
 
 </div>
 </div>
@@ -13374,10 +13396,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display sample log-data after having a PCA transformation applied</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 展示经过PCA转换的sample log-data</span>
 <span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pca_samples</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">pca_results</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
 </pre></div>
 
@@ -13465,12 +13487,12 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#32451;&#20064;&#65306;&#38477;&#32500;">&#32451;&#20064;&#65306;&#38477;&#32500;<a class="anchor-link" href="#&#32451;&#20064;&#65306;&#38477;&#32500;">&#182;</a></h3><p>当使用主成分分析的时候，一个主要的目的是减少数据的维度，这实际上降低了问题的复杂度。当然降维也是需要一定代价的：更少的维度能够表示的数据中的总方差更少。因为这个，<em>累计解释方差比（cumulative explained variance ratio）</em>对于我们确定这个问题需要多少维度非常重要。另外，如果大部分的方差都能够通过两个或者是三个维度进行表示的话，降维之后的数据能够被可视化。</p>
+<h3 id="&#32451;&#20064;&#65306;&#38477;&#32500;">&#32451;&#20064;&#65306;&#38477;&#32500;<a class="anchor-link" href="#&#32451;&#20064;&#65306;&#38477;&#32500;">&#182;</a></h3><p>当使用主成分分析的时候，一个主要的目的是减少数据的维度，这实际上降低了问题的复杂度。当然降维也是需要一定代价的：更少的维度能够表示的数据中的总方差更少。因为这个，<strong>累计解释方差比（cumulative explained variance ratio）</strong>对于我们确定这个问题需要多少维度非常重要。另外，如果大部分的方差都能够通过两个或者是三个维度进行表示的话，降维之后的数据能够被可视化。</p>
 <p>在下面的代码单元中，你将实现下面的功能：</p>
 <ul>
-<li>将<code>good_data</code>用两个维度的PCA进行拟合，并将结果存储到<code>pca</code>中去。</li>
-<li>使用<code>pca.transform</code>将<code>good_data</code>进行转换，并将结果存储在<code>reduced_data</code>中。</li>
-<li>使用<code>pca.transform</code>将<code>log_samples</code>进行转换，并将结果存储在<code>pca_samples</code>中。</li>
+<li>将 <code>good_data</code> 用两个维度的PCA进行拟合，并将结果存储到 <code>pca</code> 中去。</li>
+<li>使用 <code>pca.transform</code> 将 <code>good_data</code> 进行转换，并将结果存储在 <code>reduced_data</code> 中。</li>
+<li>使用 <code>pca.transform</code> 将 <code>log_samples</code> 进行转换，并将结果存储在 <code>pca_samples</code> 中。</li>
 </ul>
 
 </div>
@@ -13478,20 +13500,20 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Apply PCA by fitting the good data with only two dimensions</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO：通过在good data上进行PCA，将其转换成两个维度</span>
 <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">good_data</span><span class="p">)</span>
 
-<span class="c1"># TODO: Transform the good data using the PCA fit above</span>
+<span class="c1"># TODO：使用上面训练的PCA将good data进行转换</span>
 <span class="n">reduced_data</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">good_data</span><span class="p">)</span>
 
-<span class="c1"># TODO: Transform log_samples using the PCA fit above</span>
+<span class="c1"># TODO：使用上面训练的PCA将log_samples进行转换</span>
 <span class="n">pca_samples</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">log_samples</span><span class="p">)</span>
 
-<span class="c1"># Create a DataFrame for the reduced data</span>
+<span class="c1"># 为降维后的数据创建一个DataFrame</span>
 <span class="n">reduced_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Dimension 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Dimension 2&#39;</span><span class="p">])</span>
 </pre></div>
 
@@ -13504,17 +13526,17 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#35266;&#23519;">&#35266;&#23519;<a class="anchor-link" href="#&#35266;&#23519;">&#182;</a></h3><p>运行以下代码观察当仅仅使用两个维度进行PCA转换后，这个对数样本数据将怎样变化。观察这里的结果与一个使用六个维度的PCA转换相比较时，前两维的数值是保持不变的。</p>
+<h3 id="&#35266;&#23519;">&#35266;&#23519;<a class="anchor-link" href="#&#35266;&#23519;">&#182;</a></h3><p>运行以下代码观察当仅仅使用两个维度进行 PCA 转换后，这个对数样本数据将怎样变化。观察这里的结果与一个使用六个维度的 PCA 转换相比较时，前两维的数值是保持不变的。</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display sample log-data after applying PCA transformation in two dimensions</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 展示经过两个维度的PCA转换之后的样本log-data</span>
 <span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pca_samples</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Dimension 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Dimension 2&#39;</span><span class="p">]))</span>
 </pre></div>
 
@@ -13586,7 +13608,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#21487;&#35270;&#21270;&#19968;&#20010;&#21452;&#26631;&#22270;&#65288;Biplot&#65289;">&#21487;&#35270;&#21270;&#19968;&#20010;&#21452;&#26631;&#22270;&#65288;Biplot&#65289;<a class="anchor-link" href="#&#21487;&#35270;&#21270;&#19968;&#20010;&#21452;&#26631;&#22270;&#65288;Biplot&#65289;">&#182;</a></h2><p>双标图是一个散点图，每个数据点的位置由它所在主成分的分数确定。坐标系是主成分（这里是<code>Dimension 1</code> 和 <code>Dimension 2</code>）。此外，双标图还展示出初始特征在主成分上的投影。一个双标图可以帮助我们理解降维后的数据，发现主成分和初始特征之间的关系。</p>
+<h2 id="&#21487;&#35270;&#21270;&#19968;&#20010;&#21452;&#26631;&#22270;&#65288;Biplot&#65289;">&#21487;&#35270;&#21270;&#19968;&#20010;&#21452;&#26631;&#22270;&#65288;Biplot&#65289;<a class="anchor-link" href="#&#21487;&#35270;&#21270;&#19968;&#20010;&#21452;&#26631;&#22270;&#65288;Biplot&#65289;">&#182;</a></h2><p>双标图是一个散点图，每个数据点的位置由它所在主成分的分数确定。坐标系是主成分（这里是 <code>Dimension 1</code> 和 <code>Dimension 2</code>）。此外，双标图还展示出初始特征在主成分上的投影。一个双标图可以帮助我们理解降维后的数据，发现主成分和初始特征之间的关系。</p>
 <p>运行下面的代码来创建一个降维后数据的双标图。</p>
 
 </div>
@@ -13594,10 +13616,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a biplot</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 可视化双标图</span>
 <span class="n">vs</span><span class="o">.</span><span class="n">biplot</span><span class="p">(</span><span class="n">good_data</span><span class="p">,</span> <span class="n">reduced_data</span><span class="p">,</span> <span class="n">pca</span><span class="p">)</span>
 </pre></div>
 
@@ -13611,13 +13633,13 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[13]:</div>
+<div class="prompt output_prompt">Out[14]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1fe214d19b0&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1ba1961fc50&gt;</pre>
 </div>
 
 </div>
@@ -13655,17 +13677,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
-<pre><code>和第一主成分有强关联的初始特征有Detergent_Paper、Grocery、Milk；和第二主成分有强关联的初始特征有Delicatessen、Fresh、Frozen；与pca_results图相符</code></pre>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#32858;&#31867;">&#32858;&#31867;<a class="anchor-link" href="#&#32858;&#31867;">&#182;</a></h2><p>在这个部分，你讲选择使用K-Means聚类算法或者是高斯混合模型聚类算法以发现数据中隐藏的客户分类。然后，你将从簇中恢复一些特定的关键数据点，通过将它们转换回原始的维度和规模，从而理解他们的含义。</p>
+<h2 id="&#32858;&#31867;">&#32858;&#31867;<a class="anchor-link" href="#&#32858;&#31867;">&#182;</a></h2><p>在这个部分，你讲选择使用 K-Means 聚类算法或者是高斯混合模型聚类算法以发现数据中隐藏的客户分类。然后，你将从簇中恢复一些特定的关键数据点，通过将它们转换回原始的维度和规模，从而理解他们的含义。</p>
 
 </div>
 </div>
@@ -13674,7 +13686,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-6">&#38382;&#39064; 6<a class="anchor-link" href="#&#38382;&#39064;-6">&#182;</a></h3><p><em>使用K-Means聚类算法的优点是什么？使用高斯混合模型聚类算法的优点是什么？基于你现在对客户数据的观察结果，你选用了这两个算法中的哪一个，为什么？</em></p>
+<h3 id="&#38382;&#39064;-6">&#38382;&#39064; 6<a class="anchor-link" href="#&#38382;&#39064;-6">&#182;</a></h3><p>使用 K-Means 聚类算法的优点是什么？使用高斯混合模型聚类算法的优点是什么？基于你现在对客户数据的观察结果，你选用了这两个算法中的哪一个，为什么？</p>
+<p><strong>提示</strong> 判断一个聚类算法是否适合问题, 一种方法是看数据的聚集模式 (我们的可视化双标图中的散点图就展示了这种模式), 另一种方法是进行尝试, 用一些评价指标来判断优劣, 比如下面提到的轮廓系数, 也可以看我们的需要, 比如说, 我们想知道每个点属于每个聚类的概率的话, 高斯混合模型就和合适</p>
 
 </div>
 </div>
@@ -13690,7 +13703,7 @@ div#notebook {
 <p>高斯混合模型聚类算法：</p>
 <p>优点：1.提供了软聚类；2.聚类外观方面很具灵活性</p>
 <p>缺点：1.对初始值很敏感;2.可能收敛到局部最优;3.收敛速度慢</p>
-<p>对于当前数据具有高斯分布特征，选用高斯磨合模型聚类算法。</p>
+<p>通过上面的散点图观察数据的聚集模式，数据在两个维度上都有中间数据多，两边数据少，有高斯分布特征，且数据并不密集，没有形成球状或团状。所以使用高斯分布</p>
 
 </div>
 </div>
@@ -13702,12 +13715,12 @@ div#notebook {
 <h3 id="&#32451;&#20064;:-&#21019;&#24314;&#32858;&#31867;">&#32451;&#20064;: &#21019;&#24314;&#32858;&#31867;<a class="anchor-link" href="#&#32451;&#20064;:-&#21019;&#24314;&#32858;&#31867;">&#182;</a></h3><p>针对不同情况，有些问题你需要的聚类数目可能是已知的。但是在聚类数目不作为一个<strong>先验</strong>知道的情况下，我们并不能够保证某个聚类的数目对这个数据是最优的，因为我们对于数据的结构（如果存在的话）是不清楚的。但是，我们可以通过计算每一个簇中点的<strong>轮廓系数</strong>来衡量聚类的质量。数据点的<a href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.silhouette_score.html">轮廓系数</a>衡量了它与分配给他的簇的相似度，这个值范围在-1（不相似）到1（相似）。<strong>平均</strong>轮廓系数为我们提供了一种简单地度量聚类质量的方法。</p>
 <p>在接下来的代码单元中，你将实现下列功能：</p>
 <ul>
-<li>在<code>reduced_data</code>上使用一个聚类算法，并将结果赋值到<code>clusterer</code>，需要设置 <code>random_state</code> 使得结果可以复现。</li>
-<li>使用<code>clusterer.predict</code>预测<code>reduced_data</code>中的每一个点的簇，并将结果赋值到<code>preds</code>。</li>
-<li>使用算法的某个属性值找到聚类中心，并将它们赋值到<code>centers</code>。</li>
-<li>预测<code>pca_samples</code>中的每一个样本点的类别并将结果赋值到<code>sample_preds</code>。</li>
-<li>导入sklearn.metrics.silhouette_score包并计算<code>reduced_data</code>相对于<code>preds</code>的轮廓系数。<ul>
-<li>将轮廓系数赋值给<code>score</code>并输出结果。</li>
+<li>在 <code>reduced_data</code> 上使用一个聚类算法，并将结果赋值到 <code>clusterer</code>，需要设置  <code>random_state</code> 使得结果可以复现。</li>
+<li>使用 <code>clusterer.predict</code> 预测 <code>reduced_data</code> 中的每一个点的簇，并将结果赋值到 <code>preds</code>。</li>
+<li>使用算法的某个属性值找到聚类中心，并将它们赋值到 <code>centers</code>。</li>
+<li>预测 <code>pca_samples</code> 中的每一个样本点的类别并将结果赋值到 <code>sample_preds</code>。</li>
+<li>导入 <code>sklearn.metrics.silhouette_score</code> 包并计算 <code>reduced_data</code> 相对于 <code>preds</code> 的轮廓系数。<ul>
+<li>将轮廓系数赋值给 <code>score</code> 并输出结果。</li>
 </ul>
 </li>
 </ul>
@@ -13717,10 +13730,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Apply your clustering algorithm of choice to the reduced data </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO：在降维后的数据上使用你选择的聚类算法</span>
 <span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="k">import</span> <span class="n">GaussianMixture</span>
 <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="k">import</span> <span class="n">KMeans</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">silhouette_score</span>
@@ -13753,16 +13766,16 @@ div#notebook {
 <span class="n">clusterer</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
 <span class="n">clusterer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">)</span>
 
-<span class="c1"># TODO: Predict the cluster for each data point</span>
+<span class="c1"># TODO：预测每一个点的簇</span>
 <span class="n">preds</span> <span class="o">=</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">)</span>
 
-<span class="c1"># TODO: Find the cluster centers</span>
+<span class="c1"># TODO：找到聚类中心</span>
 <span class="n">centers</span> <span class="o">=</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">means_</span>
 
-<span class="c1"># TODO: Predict the cluster for each transformed sample data point</span>
+<span class="c1"># TODO：预测在每一个转换后的样本点的类</span>
 <span class="n">sample_preds</span> <span class="o">=</span> <span class="n">clusterer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">pca_samples</span><span class="p">)</span>
 
-<span class="c1"># TODO: Calculate the mean silhouette coefficient for the number of clusters chosen</span>
+<span class="c1"># TODO：计算选择的类别的平均轮廓系数（mean silhouette coefficient）</span>
 <span class="n">score</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">,</span><span class="n">preds</span><span class="p">)</span>
 </pre></div>
 
@@ -13801,7 +13814,7 @@ For clusters =  8 The average silhouette_score is : 0.29078930288761196
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-7">&#38382;&#39064; 7<a class="anchor-link" href="#&#38382;&#39064;-7">&#182;</a></h3><p><em>汇报你尝试的不同的聚类数对应的轮廓系数。在这些当中哪一个聚类的数目能够得到最佳的轮廓系数？</em></p>
+<h3 id="&#38382;&#39064;-7">&#38382;&#39064; 7<a class="anchor-link" href="#&#38382;&#39064;-7">&#182;</a></h3><p>汇报你尝试的不同的聚类数对应的轮廓系数。在这些当中哪一个聚类的数目能够得到最佳的轮廓系数？</p>
 
 </div>
 </div>
@@ -13827,10 +13840,10 @@ For clusters =  8 The average silhouette_score is : 0.29078930288761196
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display the results of the clustering from implementation</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 从已有的实现中展示聚类的结果</span>
 <span class="n">vs</span><span class="o">.</span><span class="n">cluster_results</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">pca_samples</span><span class="p">)</span>
 </pre></div>
 
@@ -13865,11 +13878,11 @@ For clusters =  8 The average silhouette_score is : 0.29078930288761196
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#32451;&#20064;:-&#25968;&#25454;&#24674;&#22797;">&#32451;&#20064;: &#25968;&#25454;&#24674;&#22797;<a class="anchor-link" href="#&#32451;&#20064;:-&#25968;&#25454;&#24674;&#22797;">&#182;</a></h3><p>上面的可视化图像中提供的每一个聚类都有一个中心点。这些中心（或者叫平均点）并不是数据中真实存在的点，但是是所有预测在这个簇中的数据点的<em>平均</em>。对于创建客户分类的问题，一个簇的中心对应于<em>那个分类的平均用户</em>。因为这个数据现在进行了降维并缩放到一定的范围，我们可以通过施加一个反向的转换恢复这个点所代表的用户的花费。</p>
+<h3 id="&#32451;&#20064;:-&#25968;&#25454;&#24674;&#22797;">&#32451;&#20064;: &#25968;&#25454;&#24674;&#22797;<a class="anchor-link" href="#&#32451;&#20064;:-&#25968;&#25454;&#24674;&#22797;">&#182;</a></h3><p>上面的可视化图像中提供的每一个聚类都有一个中心点。这些中心（或者叫平均点）并不是数据中真实存在的点，但是是所有预测在这个簇中的数据点的平均。对于创建客户分类的问题，一个簇的中心对应于那个分类的平均用户。因为这个数据现在进行了降维并缩放到一定的范围，我们可以通过施加一个反向的转换恢复这个点所代表的用户的花费。</p>
 <p>在下面的代码单元中，你将实现下列的功能：</p>
 <ul>
-<li>使用<code>pca.inverse_transform</code>将<code>centers</code> 反向转换，并将结果存储在<code>log_centers</code>中。</li>
-<li>使用<code>np.log</code>的反函数<code>np.exp</code>反向转换<code>log_centers</code>并将结果存储到<code>true_centers</code>中。</li>
+<li>使用 <code>pca.inverse_transform</code> 将 <code>centers</code> 反向转换，并将结果存储在 <code>log_centers</code> 中。</li>
+<li>使用 <code>np.log</code> 的反函数 <code>np.exp</code> 反向转换 <code>log_centers</code> 并将结果存储到 <code>true_centers</code> 中。</li>
 </ul>
 
 </div>
@@ -13877,16 +13890,16 @@ For clusters =  8 The average silhouette_score is : 0.29078930288761196
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Inverse transform the centers</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO：反向转换中心点</span>
 <span class="n">log_centers</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">centers</span><span class="p">)</span>
 
-<span class="c1"># TODO: Exponentiate the centers</span>
+<span class="c1"># TODO：对中心点做指数转换</span>
 <span class="n">true_centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">log_centers</span><span class="p">)</span>
 
-<span class="c1"># Display the true centers</span>
+<span class="c1"># 显示真实的中心点</span>
 <span class="n">segments</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Segment </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">centers</span><span class="p">))]</span>
 <span class="n">true_centers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">true_centers</span><span class="p">),</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="n">true_centers</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">segments</span>
@@ -13968,7 +13981,7 @@ For clusters =  8 The average silhouette_score is : 0.29078930288761196
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-8">&#38382;&#39064; 8<a class="anchor-link" href="#&#38382;&#39064;-8">&#182;</a></h3><p>考虑上面的代表性数据点在每一个产品类型的花费总数，<em>你认为这些客户分类代表了哪类客户？为什么？</em>需要参考在项目最开始得到的统计值来给出理由。</p>
+<h3 id="&#38382;&#39064;-8">&#38382;&#39064; 8<a class="anchor-link" href="#&#38382;&#39064;-8">&#182;</a></h3><p>考虑上面的代表性数据点在每一个产品类型的花费总数，你认为这些客户分类代表了哪类客户？为什么？需要参考在项目最开始得到的统计值来给出理由。</p>
 <p><strong>提示：</strong> 一个被分到<code>'Cluster X'</code>的客户最好被用 <code>'Segment X'</code>中的特征集来标识的企业类型表示。</p>
 
 </div>
@@ -13979,8 +13992,8 @@ For clusters =  8 The average silhouette_score is : 0.29078930288761196
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答:</strong></p>
-<p>Segment 0:代表个人消费者，会购买较多的Fresh、Frozen和Delicatessen</p>
-<p>Segment 1:代表零售商，会购买较多的Milk、Grocery和Detergents_Paper</p>
+<p>Segment 0:代表个人消费者，会购买Fresh、Frozen超过50% 4分位点（8504，1526）</p>
+<p>Segment 1:代表零售商，会购买Milk、Grocery和Detergents_Paper超过75% 4分位点（7190.25，10655.75，3922）</p>
 
 </div>
 </div>
@@ -13989,7 +14002,7 @@ For clusters =  8 The average silhouette_score is : 0.29078930288761196
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-9">&#38382;&#39064; 9<a class="anchor-link" href="#&#38382;&#39064;-9">&#182;</a></h3><p><em>对于每一个样本点 </em> <strong>问题 8</strong>  <em>中的哪一个分类能够最好的表示它？你之前对样本的预测和现在的结果相符吗？</em></p>
+<h3 id="&#38382;&#39064;-9">&#38382;&#39064; 9<a class="anchor-link" href="#&#38382;&#39064;-9">&#182;</a></h3><p>对于每一个样本点<strong>问题 8 </strong>中的哪一个分类能够最好的表示它？你之前对样本的预测和现在的结果相符吗？</p>
 <p>运行下面的代码单元以找到每一个样本点被预测到哪一个簇中去。</p>
 
 </div>
@@ -13997,10 +14010,10 @@ For clusters =  8 The average silhouette_score is : 0.29078930288761196
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display the predictions</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 显示预测结果</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pred</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sample_preds</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample point&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;predicted to be in Cluster&quot;</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
 </pre></div>
@@ -14057,8 +14070,8 @@ Sample point 2 predicted to be in Cluster 0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-10">&#38382;&#39064; 10<a class="anchor-link" href="#&#38382;&#39064;-10">&#182;</a></h3><p>在对他们的服务或者是产品做细微的改变的时候，公司经常会使用<a href="https://en.wikipedia.org/wiki/A/B_testing">A/B tests</a>以确定这些改变会对客户产生积极作用还是消极作用。这个批发商希望考虑将他的派送服务从每周5天变为每周3天，但是他只会对他客户当中对此有积极反馈的客户采用。<em>这个批发商应该如何利用客户分类来知道哪些客户对它的这个派送策略的改变有积极的反馈，如果有的话？你需要给出在这个情形下A/B 测试具体的实现方法，以及最终得出结论的依据是什么？</em><br>
-<strong>提示：</strong> 我们能假设这个改变对所有的客户影响都一致吗？我们怎样才能够确定它对于哪个类型的客户影响最大？</p>
+<h3 id="&#38382;&#39064;-10">&#38382;&#39064; 10<a class="anchor-link" href="#&#38382;&#39064;-10">&#182;</a></h3><p>在对他们的服务或者是产品做细微的改变的时候，公司经常会使用 <a href="https://en.wikipedia.org/wiki/A/B_testing">A/B tests </a>以确定这些改变会对客户产生积极作用还是消极作用。这个批发商希望考虑将他的派送服务从每周5天变为每周3天，但是他只会对他客户当中对此有积极反馈的客户采用。这个批发商应该如何利用客户分类来知道哪些客户对它的这个派送策略的改变有积极的反馈，如果有的话？你需要给出在这个情形下A/B 测试具体的实现方法，以及最终得出结论的依据是什么？</p>
+<p><strong>提示：</strong> 我们能假设这个改变对所有的客户影响都一致吗？我们怎样才能够确定它对于哪个类型的客户影响最大？</p>
 
 </div>
 </div>
@@ -14077,38 +14090,94 @@ Sample point 2 predicted to be in Cluster 0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-11">&#38382;&#39064; 11<a class="anchor-link" href="#&#38382;&#39064;-11">&#182;</a></h3><p>通过聚类技术，我们能够将原有的没有标记的数据集中的附加结构分析出来。因为每一个客户都有一个最佳的划分（取决于你选择使用的聚类算法），我们可以把<em>用户分类</em>作为数据的一个<a href="https://en.wikipedia.org/wiki/Feature_learning#Unsupervised_feature_learning"><strong>工程特征</strong></a>。假设批发商最近迎来十位新顾客，并且他已经为每位顾客每个产品类别年度采购额进行了预估。进行了这些估算之后，批发商该如何运用它的预估和<strong>非监督学习的结果</strong>来对这十个新的客户进行更好的预测？</p>
-<p><strong>提示：</strong>如果存在聚类特征'cluster'与不存在相比对最终的得分会有什么影响？这对你有什么启发？</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答：</strong></p>
-<p>根据对新用户的预估，可以通过预估数据中用户对各类商品购买数量，计算出用户可能被分类到cluster 0还是cluster 1.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#21487;&#35270;&#21270;&#20869;&#22312;&#30340;&#20998;&#24067;">&#21487;&#35270;&#21270;&#20869;&#22312;&#30340;&#20998;&#24067;<a class="anchor-link" href="#&#21487;&#35270;&#21270;&#20869;&#22312;&#30340;&#20998;&#24067;">&#182;</a></h3><p>在这个项目的开始，我们讨论了从数据集中移除<code>'Channel'</code>和<code>'Region'</code>特征，这样在分析过程中我们就会着重分析用户产品类别。通过重新引入<code>Channel</code>这个特征到数据集中，并施加和原来数据集同样的PCA变换的时候我们将能够发现数据集产生一个有趣的结构。</p>
-<p>运行下面的代码单元以查看哪一个数据点在降维的空间中被标记为<code>'HoReCa'</code> (旅馆/餐馆/咖啡厅)或者<code>'Retail'</code>。另外，你将发现样本点在图中被圈了出来，用以显示他们的标签。</p>
+<h3 id="&#38382;&#39064;-11">&#38382;&#39064; 11<a class="anchor-link" href="#&#38382;&#39064;-11">&#182;</a></h3><p>通过聚类技术，我们能够将原有的没有标记的数据集中的附加结构分析出来。因为每一个客户都有一个最佳的划分（取决于你选择使用的聚类算法），我们可以把用户分类作为数据的一个<a href="https://en.wikipedia.org/wiki/Feature_learning#Unsupervised_feature_learning">工程特征</a>。假设批发商最近迎来十位新顾客，并且他已经为每位顾客每个产品类别年度采购额进行了预估。进行了这些估算之后，批发商该如何运用它的预估和非监督学习的结果来对这十个新的客户进行更好的预测？</p>
+<p><strong>提示</strong>：在下面的代码单元中，我们提供了一个已经做好聚类的数据（聚类结果为数据中的cluster属性），我们将在这个数据集上做一个小实验。尝试运行下面的代码看看我们尝试预测‘Region’的时候，如果存在聚类特征'cluster'与不存在相比对最终的得分会有什么影响？这对你有什么启发？</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Display the clustering results based on &#39;Channel&#39; data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># 读取包含聚类结果的数据</span>
+<span class="n">cluster_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;cluster.csv&quot;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">cluster_data</span><span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">cluster_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Region&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 划分训练集测试集</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">score_with_cluster</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="c1"># 移除cluster特征</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">X_train</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;cluster&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">X_test</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;cluster&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">score_no_cluster</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;不使用cluster特征的得分: </span><span class="si">%.4f</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">sc</span>ore_no_cluster<span class="o">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;使用cluster特征的得分: </span><span class="si">%.4f</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">sc</span>ore_with_cluster<span class="o">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>不使用cluster特征的得分: 0.6437
+使用cluster特征的得分: 0.6667
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>回答：</strong></p>
+<p>用户特征中，可能存在相互有关联的属性，通过聚类，可以将这些属性一一定的权重聚合在一起，避免关联属性对聚类结果产生较大影响，最后影响聚类结果。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="&#21487;&#35270;&#21270;&#20869;&#22312;&#30340;&#20998;&#24067;">&#21487;&#35270;&#21270;&#20869;&#22312;&#30340;&#20998;&#24067;<a class="anchor-link" href="#&#21487;&#35270;&#21270;&#20869;&#22312;&#30340;&#20998;&#24067;">&#182;</a></h3><p>在这个项目的开始，我们讨论了从数据集中移除 <code>'Channel'</code> 和 <code>'Region'</code> 特征，这样在分析过程中我们就会着重分析用户产品类别。通过重新引入 <code>Channel</code> 这个特征到数据集中，并施加和原来数据集同样的 PCA 变换的时候我们将能够发现数据集产生一个有趣的结构。</p>
+<p>运行下面的代码单元以查看哪一个数据点在降维的空间中被标记为 <code>'HoReCa'</code> (旅馆/餐馆/咖啡厅)或者 <code>'Retail'</code>。另外，你将发现样本点在图中被圈了出来，用以显示他们的标签。</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 根据‘Channel‘数据显示聚类的结果</span>
 <span class="n">vs</span><span class="o">.</span><span class="n">channel_results</span><span class="p">(</span><span class="n">reduced_data</span><span class="p">,</span> <span class="n">outliers</span><span class="p">,</span> <span class="n">pca_samples</span><span class="p">)</span>
 </pre></div>
 
@@ -14143,7 +14212,7 @@ Sample point 2 predicted to be in Cluster 0
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-12">&#38382;&#39064; 12<a class="anchor-link" href="#&#38382;&#39064;-12">&#182;</a></h3><p><em>你选择的聚类算法和聚类点的数目，与内在的旅馆/餐馆/咖啡店和零售商的分布相比，有足够好吗？根据这个分布有没有哪个簇能够刚好划分成'零售商'或者是'旅馆/饭店/咖啡馆'？你觉得这个分类和前面你对于用户分类的定义是一致的吗？</em></p>
+<h3 id="&#38382;&#39064;-12">&#38382;&#39064; 12<a class="anchor-link" href="#&#38382;&#39064;-12">&#182;</a></h3><p>你选择的聚类算法和聚类点的数目，与内在的旅馆/餐馆/咖啡店和零售商的分布相比，有足够好吗？根据这个分布有没有哪个簇能够刚好划分成'零售商'或者是'旅馆/饭店/咖啡馆'？你觉得这个分类和前面你对于用户分类的定义是一致的吗？</p>
 
 </div>
 </div>
