@@ -6,6 +6,9 @@
 ![](image/cluster-distance.png)  
 
 ## 聚类
+硬聚类：把数据确切地分到某一类中，是属于A类就是A类，不会跑到B类；比如K-Means。    
+软聚类/模糊聚类(fuzzy clustering）:把数据以一定的概率分到各类中,聚类的结果往往是样本1在A类的概率是0.7，在B类的概率是0.3;比如高斯混合模型(GMM)，比如模糊C均值模型(Fuzzy c-Means)。  
+
 ### K-Means(K均值)
 K-Means 是一种基于距离的排他的聚类划分方法；K-means算法是硬聚类算法，以欧式距离作为相似度测度，它是求对应某一初始聚类中心向量V最优分类，使得评价指标J最小。算法采用误差平方和准则函数作为聚类准则函数。K表示聚类数目。  
 
@@ -47,7 +50,7 @@ K-Means优缺点：
 3.  重新计算新的类与所有旧类之间的距离.   
 4.  重复第2步和第3步, 直到最后合并成一个类为止(此类包含了N个对象)或满足一定条件终止  
 
-根据步骤3的不同, 可将层次式聚类方法分 **单连接算法(single-linkage)** 、 **全连接算法(complete-linkage)** 以及 **平均连接（average-linkage**  --参考上面cluster距离计算方式。  
+根据步骤3的不同, 可将层次式聚类方法分 **单连接算法(single-linkage)** 、 **全连接算法(complete-linkage)** 以及 **平均连接（average-linkage）**  --参考上面cluster距离计算方式。  
 
 代码实现：Hierarchical-Clustering/Hierarchical Clustering Lab-zh.ipynb  
 
