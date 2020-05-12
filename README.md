@@ -112,6 +112,9 @@ DBSCAN优点和缺点：
 
 DBSCAN实现:DBSCAN/DBSCAN Notebook-zh.ipynb   
 
+### SOM神经网络
+待补充  
+
 ## 高斯混合模型(GMM)与聚类验证
 ### 高斯混合模型(GMM)
 高斯分布：即正态分布  
